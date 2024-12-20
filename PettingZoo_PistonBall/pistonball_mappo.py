@@ -83,14 +83,12 @@ def unbatchify(x, env):
 
     return x
 
-def train_policy(total_episodes:int):
+def train_policy(total_episodes:int, gamma:int, clip_coef:int):
 
     """ALGO PARAMS"""
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     ent_coef = 0.1
     vf_coef = 0.1
-    clip_coef = 0.1
-    gamma = 0.99
     batch_size = 32
     stack_size = 4
     frame_size = (64, 64)
@@ -296,6 +294,8 @@ def render_policy(agent, total_episodes:int, device):
 if __name__ == '__main__':
 
     total_episodes = 5
-    trained_agent, device = train_policy(total_episodes)
+    discount_rate = 0.99 
+    clip_coef = 0.1
+    trained_agent, device = train_policy(total_episodes, discount_rate, clip_coef)
     render_policy(trained_agent, total_episodes, device)
 
