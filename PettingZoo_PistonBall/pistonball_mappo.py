@@ -285,7 +285,7 @@ def render_policy(agent, total_episodes:int, device):
             frames.append(env.render())
 
     # Save frames as a GIF
-    output_filename = "PettingZoo_PistonBall/pistonball.gif"
+    output_filename = "INF8250AE-MARL-NOTEBOOK/PettingZoo_PistonBall/pistonball.gif"
     imageio.mimsave(output_filename, frames, fps=5)  # Adjust fps as needed
     print(f"Saved GIF to {output_filename}")
 
